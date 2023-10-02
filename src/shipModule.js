@@ -4,7 +4,15 @@ export class Ship {
     this.wasHit = 0;
   }
 
-  isSunk() {}
+  isSunk() {
+    if (this.len === this.wasHit) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
-  hit() {}
+  hit() {
+    return this.wasHit++;
+  }
 }

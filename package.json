@@ -11,9 +11,7 @@
   "author": "Philip Kriuk",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.23.0",
     "@babel/preset-env": "^7.22.20",
-    "babel-jest": "^29.7.0",
     "css-loader": "^6.8.1",
     "eslint": "^8.50.0",
     "html-loader": "^4.2.0",
