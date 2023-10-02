@@ -14,16 +14,7 @@ export class Gameboard {
     ];
   }
 
-  receiveAttack(i, j) {
-    this.board[i][j] = -1;
-    console.log(this.board);
-    return true;
-  }
+  receiveAttack() {}
 
   randomBoard() {}
-}
-
-export function getRandomInt() {
-  let max = 10;
-  return Math.floor(Math.random() * max);
 }

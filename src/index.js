@@ -1,7 +1,9 @@
 import "./styles/main.scss";
-import { Gameboard, getRandomInt } from "./gameboardModule";
+import { Gameboard } from "./gameboardModule";
+import { Ship } from "./shipModule";
+import { AI } from "./ai";
 
-const gb = new Gameboard();
-let i = getRandomInt();
-let j = getRandomInt();
-gb.receiveAttack(i, j);
+const comp = new AI();
+const playerBoard = new Gameboard();
+
+console.log(comp.attack(5, 5));
