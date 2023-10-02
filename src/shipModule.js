@@ -11,8 +11,4 @@ export class Ship {
       return false;
     }
   }
-
-  hit() {
-    return this.wasHit++;
-  }
 }
