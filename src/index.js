@@ -1,6 +1,6 @@
 import "./styles/main.scss";
-import { AI } from "./ai";
-import { Gameboard } from "./gameboardModule";
+import { AI } from "./components/ai";
+import { Gameboard } from "./components/gameboardModule";
 
 const playerBoard = new Gameboard();
 const comp = new AI();

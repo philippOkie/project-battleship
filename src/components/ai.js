@@ -10,21 +10,14 @@ export class AI {
         console.log("water");
       } else if (playerBoard.board[x][y] === 1) {
         playerBoard.board[x][y] = -1;
-        if (playerBoard.board[x + 1][y] === 1) {
-          this.attack(x + 1, y, playerBoard);
-        } else if (playerBoard.board[x - 1][y] === 1) {
-          this.attack(x - 1, y, playerBoard);
-        } else if (playerBoard.board[x][y + 1] === 1) {
-          this.attack(x, y + 1, playerBoard);
-        } else if (playerBoard.board[x][y - 1] === 1) {
-          this.attack(x, y - 1, playerBoard);
-        }
-        console.log("ship");
+        this.decideWhereToHit(x, y, playerBoard);
+        this.counter++;
+        console.log("ship", this.counter);
       }
     } else if (playerBoard.board[x][y] === 2) {
       this.attack(this.getRandomInt(), this.getRandomInt(), playerBoard);
     }
-    return playerBoard.board;
+    return this.counter, playerBoard.board;
   }
 
   getRandomInt() {
@@ -32,8 +25,16 @@ export class AI {
     return Math.floor(Math.random() * max);
   }
 
-  decideGoUpOrDown() {
-    return (this.upOrDown = Math.random() < 0.5 ? -1 : 1);
+  decideWhereToHit(x, y, playerBoard) {
+    if (playerBoard.board[x + 1][y] === 1) {
+      this.attack(x + 1, y, playerBoard);
+    } else if (playerBoard.board[x - 1][y] === 1) {
+      this.attack(x - 1, y, playerBoard);
+    } else if (playerBoard.board[x][y + 1] === 1) {
+      this.attack(x, y + 1, playerBoard);
+    } else if (playerBoard.board[x][y - 1] === 1) {
+      this.attack(x, y - 1, playerBoard);
+    }
   }
 
   checkIfTheEnd(playerBoard) {
