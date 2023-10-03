@@ -10,6 +10,15 @@ export class AI {
         console.log("water");
       } else if (playerBoard.board[x][y] === 1) {
         playerBoard.board[x][y] = -1;
+        if (playerBoard.board[x + 1][y] === 1) {
+          this.attack(x + 1, y, playerBoard);
+        } else if (playerBoard.board[x - 1][y] === 1) {
+          this.attack(x - 1, y, playerBoard);
+        } else if (playerBoard.board[x][y + 1] === 1) {
+          this.attack(x, y + 1, playerBoard);
+        } else if (playerBoard.board[x][y - 1] === 1) {
+          this.attack(x, y - 1, playerBoard);
+        }
         console.log("ship");
       }
     } else if (playerBoard.board[x][y] === 2) {
