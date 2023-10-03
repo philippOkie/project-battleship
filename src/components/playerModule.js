@@ -15,7 +15,8 @@ export class Player {
         }
       }
       console.log(playerBoard);
-      return playerBoard.board;
+      this.isSecondThree();
+      return this.ships--, playerBoard.board;
     } else if (switcher === 0) {
       for (let step = 0; step < this.ships; step++) {
         if (playerBoard.board[x][y + step] !== 1) {
@@ -25,9 +26,18 @@ export class Player {
         }
       }
       console.log(playerBoard);
-      return playerBoard.board;
+      this.isSecondThree();
+      return this.ships--, playerBoard.board;
     }
-    console.log(playerBoard);
-    return playerBoard.board;
   }
+
+  isSecondThree() {
+    if (this.threeLenShip === 2) {
+      return this.ships++, this.threeLenShip++;
+    } else {
+      return this.threeLenShip++;
+    }
+  }
+
+  isFit(x, y, playerBoard, switcher) {}
 }

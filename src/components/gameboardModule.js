@@ -13,6 +13,4 @@ export class Gameboard {
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ];
   }
-
-  randomBoard() {}
 }
