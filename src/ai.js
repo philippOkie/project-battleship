@@ -1,20 +1,19 @@
-import { Gameboard } from "./gameboardModule";
-
-const playerBoard = new Gameboard();
-
 export class AI {
   constructor() {
     this.counter = 0;
   }
 
-  attack(x, y) {
-    if (playerBoard.board[x][y] === 1) {
-      playerBoard.board[x][y] = -1;
-    }
-    if (playerBoard.board[x][y] === 0) {
-      playerBoard.board[x][y] = 1;
-    } else {
-      this.attack(getRandomInt(), getRandomInt());
+  attack(x, y, playerBoard) {
+    if (playerBoard.board[x][y] !== 2) {
+      if (playerBoard.board[x][y] === 0) {
+        playerBoard.board[x][y] = 2;
+        console.log("water");
+      } else if (playerBoard.board[x][y] === 1) {
+        playerBoard.board[x][y] = -1;
+        console.log("ship");
+      }
+    } else if (playerBoard.board[x][y] === 2) {
+      this.attack(this.getRandomInt(), this.getRandomInt(), playerBoard);
     }
     return playerBoard.board;
   }
@@ -25,11 +24,10 @@ export class AI {
   }
 
   decideGoUpOrDown() {
-    let upOrDown;
-    return (upOrDown = Math.random() < 0.5 ? -1 : 1);
+    return (this.upOrDown = Math.random() < 0.5 ? -1 : 1);
   }
 
-  checkIfTheEnd() {
+  checkIfTheEnd(playerBoard) {
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
         if (playerBoard.board[i][j] === -1) {
