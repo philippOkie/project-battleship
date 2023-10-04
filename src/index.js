@@ -3,6 +3,9 @@ import { AI } from "./components/ai";
 import { Gameboard } from "./components/gameboardModule";
 import { Player } from "./components/playerModule";
 
+function getRandom() {
+  return Math.floor(Math.random() * 2);
+}
 // let switcher = 1;
 // let x
 // let y
@@ -12,18 +15,68 @@ const comp = new AI();
 const player = new Player();
 
 player.fillBoard(5, 5, playerBoard, 1);
-player.fillBoard(3, 3, playerBoard, 0);
+player.fillBoard(3, 6, playerBoard, 0);
 player.fillBoard(0, 0, playerBoard, 0);
 player.fillBoard(1, 0, playerBoard, 0);
 player.fillBoard(2, 0, playerBoard, 0);
 
-console.log(playerBoard.board);
-console.log(player.threeLenShip);
-console.log(compBoard.board);
+function myFunction() {
+  comp.fillBoard(
+    comp.getRandomInt(),
+    comp.getRandomInt(),
+    compBoard,
+    getRandom()
+  );
+  comp.fillBoard(
+    comp.getRandomInt(),
+    comp.getRandomInt(),
+    compBoard,
+    getRandom()
+  );
+  comp.fillBoard(
+    comp.getRandomInt(),
+    comp.getRandomInt(),
+    compBoard,
+    getRandom()
+  );
+  comp.fillBoard(
+    comp.getRandomInt(),
+    comp.getRandomInt(),
+    compBoard,
+    getRandom()
+  );
+  comp.fillBoard(
+    comp.getRandomInt(),
+    comp.getRandomInt(),
+    compBoard,
+    getRandom()
+  );
+  // For demonstration purposes, let's say this function sometimes throws an error
+  if (Math.random() < 0.5) {
+    throw new Error("Simulated error");
+  }
 
-// playerBoard.board[5][5] = 1;
-// playerBoard.board[5][6] = 1;
-// playerBoard.board[5][7] = 1;
-// console.log(playerBoard.board);
-// comp.attack(5, 5, playerBoard);
-// console.log(playerBoard.board);
+  // If the code runs successfully, return some result
+  return "Success";
+}
+
+function retryFunctionOnFailure() {
+  let retryCount = 0;
+  const maxRetries = 10; // You can adjust the number of retries as needed
+  while (retryCount < maxRetries) {
+    try {
+      const result = myFunction();
+      return result; // If successful, exit the loop
+    } catch (error) {
+      retryCount++;
+    }
+  }
+  console.error("Function failed after multiple retries");
+  return null;
+}
+
+console.log("this is player's board", playerBoard.board);
+console.log(player.threeLenShip);
+
+retryFunctionOnFailure();
+console.log("this is comp's board", compBoard.board);

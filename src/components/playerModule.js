@@ -39,5 +39,18 @@ export class Player {
     }
   }
 
-  isFit(x, y, playerBoard, switcher) {}
+  checkIfTheEnd(playerBoard) {
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        if (playerBoard.board[i][j] === -1) {
+          this.counter++;
+        }
+      }
+    }
+    if (this.counter === 17) {
+      return true;
+    } else {
+      return this.counter;
+    }
+  }
 }
