@@ -6,19 +6,6 @@ import { Player } from "./components/playerModule";
 function getRandom() {
   return Math.floor(Math.random() * 2);
 }
-// let switcher = 1;
-// let x
-// let y
-const playerBoard = new Gameboard();
-const compBoard = new Gameboard();
-const comp = new AI();
-const player = new Player();
-
-player.fillBoard(5, 5, playerBoard, 1);
-player.fillBoard(3, 6, playerBoard, 0);
-player.fillBoard(0, 0, playerBoard, 0);
-player.fillBoard(1, 0, playerBoard, 0);
-player.fillBoard(2, 0, playerBoard, 0);
 
 function myFunction() {
   comp.fillBoard(
@@ -75,8 +62,19 @@ function retryFunctionOnFailure() {
   return null;
 }
 
-console.log("this is player's board", playerBoard.board);
-console.log(player.threeLenShip);
+const playerBoard = new Gameboard();
+const compBoard = new Gameboard();
+const comp = new AI();
+const player = new Player();
 
-retryFunctionOnFailure();
-console.log("this is comp's board", compBoard.board);
+// player.fillBoard(5, 5, playerBoard, 1);
+// player.fillBoard(3, 6, playerBoard, 0);
+// player.fillBoard(0, 0, playerBoard, 0);
+// player.fillBoard(1, 0, playerBoard, 0);
+// player.fillBoard(2, 0, playerBoard, 0);
+
+// console.log("this is player's board", playerBoard.board);
+// console.log(player.threeLenShip);
+
+// retryFunctionOnFailure();
+// console.log("this is comp's board", compBoard.board);

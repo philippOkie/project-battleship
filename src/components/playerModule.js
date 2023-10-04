@@ -39,6 +39,23 @@ export class Player {
     }
   }
 
+  attack(x, y, playerBoard) {
+    if (playerBoard.board[x][y] !== 2) {
+      if (playerBoard.board[x][y] === 0) {
+        playerBoard.board[x][y] = 2;
+        console.log("water");
+      } else if (playerBoard.board[x][y] === 1) {
+        playerBoard.board[x][y] = -1;
+        this.decideWhereToHit(x, y, playerBoard);
+        this.counter++;
+        console.log("ship", this.counter);
+      }
+    } else if (playerBoard.board[x][y] === 2) {
+      this.attack(this.getRandomInt(), this.getRandomInt(), playerBoard);
+    }
+    return this.counter, playerBoard.board;
+  }
+
   checkIfTheEnd(playerBoard) {
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {

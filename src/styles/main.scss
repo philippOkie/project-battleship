@@ -1,1 +1,71 @@
 @import url(./reset.scss);
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap");
+
+:root {
+  --white-main: #fdfffc;
+  --black-main: #011627;
+  --blue-main: #2ec4b6;
+  --red-main: #e71d36;
+}
+
+body {
+  font-family: "Pixelify Sans", cursive;
+  height: 100%;
+}
+
+header {
+  background-color: green;
+  grid-area: header;
+  font-size: 5em;
+  font-weight: 700;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  border: 4px solid #e71d36;
+}
+
+.general-container {
+  height: 100%;
+  display: grid;
+  grid-template-areas:
+    "header header header header"
+    "left   left   right  right"
+    "left   left   right  right"
+    "left   left   right  right"
+    "left   left   right  right"
+    "left   left   right  right"
+    "left   left   right  right"
+    "left   left   right  right"
+    "left   left   right  right"
+    "left   left   right  right";
+}
+
+.left-container {
+  background-color: red;
+  grid-area: left;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 70% 30%;
+  justify-items: center;
+  align-items: center;
+}
+
+.right-container {
+  background-color: blue;
+  grid-area: right;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 70% 30%;
+  justify-items: center;
+  align-items: center;
+}
+
+.cell-container {
+  width: 50%;
+  height: 80%;
+  background-color: #fdfffc;
+}

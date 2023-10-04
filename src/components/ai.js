@@ -93,6 +93,4 @@ export class AI {
       return this.counter;
     }
   }
-
-  isFit(playerBoard) {}
 }
