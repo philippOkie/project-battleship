@@ -3,11 +3,17 @@ import { AI } from "./components/ai";
 import { Gameboard } from "./components/gameboardModule";
 import { Player } from "./components/playerModule";
 
+const playerBoard = new Gameboard();
+const compBoard = new Gameboard();
+const comp = new AI();
+const player = new Player();
+let switcher = 1;
+
 function getRandom() {
   return Math.floor(Math.random() * 2);
 }
 
-function myFunction() {
+function aiFill() {
   comp.fillBoard(
     comp.getRandomInt(),
     comp.getRandomInt(),
@@ -52,7 +58,7 @@ function retryFunctionOnFailure() {
   const maxRetries = 10; // You can adjust the number of retries as needed
   while (retryCount < maxRetries) {
     try {
-      const result = myFunction();
+      const result = aiFill();
       return result; // If successful, exit the loop
     } catch (error) {
       retryCount++;
@@ -62,10 +68,15 @@ function retryFunctionOnFailure() {
   return null;
 }
 
-const playerBoard = new Gameboard();
-const compBoard = new Gameboard();
-const comp = new AI();
-const player = new Player();
+// window.oncontextmenu = function (e) {
+//   e.preventDefault();
+//   if (switcher === 1) {
+//     switcher = 0;
+//   } else if (switcher === 0) {
+//     switcher = 1;
+//   }
+//   alert("Right Click, Switcher: " + switcher);
+// };
 
 // player.fillBoard(5, 5, playerBoard, 1);
 // player.fillBoard(3, 6, playerBoard, 0);
@@ -76,5 +87,11 @@ const player = new Player();
 // console.log("this is player's board", playerBoard.board);
 // console.log(player.threeLenShip);
 
-// retryFunctionOnFailure();
-// console.log("this is comp's board", compBoard.board);
+retryFunctionOnFailure();
+
+const computerBoard = document.getElementById("computerBoard");
+const cell = document.createElement("div");
+cell.classList.add("cell");
+computerBoard.appendChild("cell");
+
+console.log("this is comp's board", compBoard.board);
