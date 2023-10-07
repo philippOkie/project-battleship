@@ -16,7 +16,8 @@ export class Player {
       }
       console.log(playerBoard);
       this.isSecondThree();
-      return this.ships--, playerBoard.board;
+      this.ships--;
+      return playerBoard.board;
     } else if (switcher === 0) {
       for (let step = 0; step < this.ships; step++) {
         if (playerBoard.board[x][y + step] !== 1) {
@@ -27,7 +28,9 @@ export class Player {
       }
       console.log(playerBoard);
       this.isSecondThree();
-      return this.ships--, playerBoard.board;
+      this.ships--;
+
+      return playerBoard.board;
     }
   }
 

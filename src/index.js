@@ -9,6 +9,7 @@ const playerBoard = new Gameboard();
 const compBoard = new Gameboard();
 const comp = new AI();
 const player = new Player();
+const playerCells = document.querySelectorAll("playerCell");
 let switcher = 1;
 
 function getRandom() {
@@ -46,30 +47,9 @@ function aiFill() {
     compBoard,
     getRandom()
   );
-  // For demonstration purposes, let's say this function sometimes throws an error
-  if (Math.random() < 0.5) {
-    throw new Error("Simulated error");
-  }
-
-  // If the code runs successfully, return some result
   return "Success";
 }
-
-function retryFunctionOnFailure() {
-  let retryCount = 0;
-  const maxRetries = 10; // You can adjust the number of retries as needed
-  while (retryCount < maxRetries) {
-    try {
-      const result = aiFill();
-      return result; // If successful, exit the loop
-    } catch (error) {
-      retryCount++;
-    }
-  }
-  console.error("Function failed after multiple retries");
-  return null;
-}
-
+aiFill();
 // window.oncontextmenu = function (e) {
 //   e.preventDefault();
 //   if (switcher === 1) {
@@ -89,37 +69,6 @@ function retryFunctionOnFailure() {
 // console.log("this is player's board", playerBoard.board);
 // console.log(player.threeLenShip);
 
-// retryFunctionOnFailure();
-comp.fillBoard(
-  comp.getRandomInt(),
-  comp.getRandomInt(),
-  compBoard,
-  getRandom()
-);
-comp.fillBoard(
-  comp.getRandomInt(),
-  comp.getRandomInt(),
-  compBoard,
-  getRandom()
-);
-comp.fillBoard(
-  comp.getRandomInt(),
-  comp.getRandomInt(),
-  compBoard,
-  getRandom()
-);
-comp.fillBoard(
-  comp.getRandomInt(),
-  comp.getRandomInt(),
-  compBoard,
-  getRandom()
-);
-comp.fillBoard(
-  comp.getRandomInt(),
-  comp.getRandomInt(),
-  compBoard,
-  getRandom()
-);
 // comp.fillBoard(0, 5, compBoard, 0);
 // comp.fillBoard(2, 5, compBoard, 0);
 // comp.fillBoard(4, 2, compBoard, 0);
@@ -127,3 +76,15 @@ comp.fillBoard(
 // comp.fillBoard(6, 5, compBoard, 1);
 show.showAIBoard(compBoard);
 console.log("this is comp's board", compBoard.board);
+
+const cells = document.querySelectorAll(".cell");
+
+cells.forEach(function (cellElement) {
+  cellElement.onclick = function () {
+    if (cellElement.getAttribute("value") === "1") {
+      cellElement.classList.add("isHit");
+    } else {
+      cellElement.classList.add("isWata");
+    }
+  };
+});
