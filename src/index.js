@@ -2,7 +2,9 @@ import "./styles/main.scss";
 import { AI } from "./components/ai";
 import { Gameboard } from "./components/gameboardModule";
 import { Player } from "./components/playerModule";
+import { ShowBoard } from "./components/uiModule";
 
+const show = new ShowBoard();
 const playerBoard = new Gameboard();
 const compBoard = new Gameboard();
 const comp = new AI();
@@ -87,11 +89,41 @@ function retryFunctionOnFailure() {
 // console.log("this is player's board", playerBoard.board);
 // console.log(player.threeLenShip);
 
-retryFunctionOnFailure();
-
-const computerBoard = document.getElementById("computerBoard");
-const cell = document.createElement("div");
-cell.classList.add("cell");
-computerBoard.appendChild("cell");
-
+// retryFunctionOnFailure();
+comp.fillBoard(
+  comp.getRandomInt(),
+  comp.getRandomInt(),
+  compBoard,
+  getRandom()
+);
+comp.fillBoard(
+  comp.getRandomInt(),
+  comp.getRandomInt(),
+  compBoard,
+  getRandom()
+);
+comp.fillBoard(
+  comp.getRandomInt(),
+  comp.getRandomInt(),
+  compBoard,
+  getRandom()
+);
+comp.fillBoard(
+  comp.getRandomInt(),
+  comp.getRandomInt(),
+  compBoard,
+  getRandom()
+);
+comp.fillBoard(
+  comp.getRandomInt(),
+  comp.getRandomInt(),
+  compBoard,
+  getRandom()
+);
+// comp.fillBoard(0, 5, compBoard, 0);
+// comp.fillBoard(2, 5, compBoard, 0);
+// comp.fillBoard(4, 2, compBoard, 0);
+// comp.fillBoard(6, 4, compBoard, 0);
+// comp.fillBoard(6, 5, compBoard, 1);
+show.showAIBoard(compBoard);
 console.log("this is comp's board", compBoard.board);
