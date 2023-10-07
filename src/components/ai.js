@@ -62,14 +62,21 @@ export class AI {
         if (
           playerBoard.board[x + step][y] === 1 ||
           playerBoard.board[x + step][y] === undefined ||
-          playerBoard.board[x + step][y] === 1
+          hasAdjacentShip(x + step, y)
         ) {
-          playerBoard.board[x - (this.ships - step)][y] = 1;
+          return this.fillBoard(
+            this.getRandomInt(numRows - this.ships + 1),
+            this.getRandomInt(numCols),
+            playerBoard,
+            this.getRandom()
+          );
         }
       }
-      console.log(playerBoard);
-      this.isSecondThree();
-      return this.ships--, playerBoard.board;
+
+      for (let j = 0; j < this.ships; j++) {
+        playerBoard.board[x + j][y] = 1;
+        placeBuffer(x + j, y);
+      }
     } else if (switcher === 0) {
       if (y + this.ships > numCols) {
         return this.fillBoard(
@@ -94,9 +101,24 @@ export class AI {
           );
         }
       }
-      console.log(playerBoard);
-      this.isSecondThree();
-      return this.ships--, playerBoard.board;
+
+      for (let j = 0; j < this.ships; j++) {
+        playerBoard.board[x][y + j] = 1;
+        placeBuffer(x, y + j);
+      }
+    }
+
+    this.isSecondThree();
+    this.ships--;
+    return playerBoard;
+  }
+
+  isSecondThree() {
+    if (this.threeLenShip === 2) {
+      this.ships++;
+      this.threeLenShip++;
+    } else {
+      this.threeLenShip++;
     }
   }
 
