@@ -92,3 +92,10 @@ body {
 .isHit {
   background-color: var(--red-main);
 }
+
+.cellPlayer {
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--black-main);
+  transition: 0.3s;
+}

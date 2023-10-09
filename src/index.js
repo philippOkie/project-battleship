@@ -50,15 +50,15 @@ function aiFill() {
   return "Success";
 }
 aiFill();
-// window.oncontextmenu = function (e) {
-//   e.preventDefault();
-//   if (switcher === 1) {
-//     switcher = 0;
-//   } else if (switcher === 0) {
-//     switcher = 1;
-//   }
-//   alert("Right Click, Switcher: " + switcher);
-// };
+window.oncontextmenu = function (e) {
+  e.preventDefault();
+  if (switcher === 1) {
+    switcher = 0;
+  } else if (switcher === 0) {
+    switcher = 1;
+  }
+  console.log("Right Click, Switcher: " + switcher);
+};
 
 // player.fillBoard(5, 5, playerBoard, 1);
 // player.fillBoard(3, 6, playerBoard, 0);
@@ -66,7 +66,7 @@ aiFill();
 // player.fillBoard(1, 0, playerBoard, 0);
 // player.fillBoard(2, 0, playerBoard, 0);
 
-// console.log("this is player's board", playerBoard.board);
+console.log("this is player's board", playerBoard.board);
 // console.log(player.threeLenShip);
 
 // comp.fillBoard(0, 5, compBoard, 0);
@@ -74,7 +74,7 @@ aiFill();
 // comp.fillBoard(4, 2, compBoard, 0);
 // comp.fillBoard(6, 4, compBoard, 0);
 // comp.fillBoard(6, 5, compBoard, 1);
-show.showAIBoard(compBoard);
+show.showBoard(compBoard);
 console.log("this is comp's board", compBoard.board);
 
 const cells = document.querySelectorAll(".cell");
@@ -87,4 +87,18 @@ cells.forEach(function (cellElement) {
       cellElement.classList.add("isWata");
     }
   };
+});
+
+const cellsPlayer = document.querySelectorAll(".cellPlayer");
+
+cellsPlayer.forEach((cellPlayer) => {
+  let y;
+  let x;
+  cellPlayer.addEventListener("click", (e) => {
+    e.preventDefault();
+    y = e.target.getAttribute("y");
+    x = e.target.getAttribute("x");
+    player.fillBoard(y, x, playerBoard, switcher);
+    show.showBoardPlayer(playerBoard);
+  });
 });
