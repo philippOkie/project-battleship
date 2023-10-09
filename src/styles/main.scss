@@ -99,3 +99,7 @@ body {
   border: 2px solid var(--black-main);
   transition: 0.3s;
 }
+
+.cellPlayer:hover {
+  background-color: var(--black-main);
+}

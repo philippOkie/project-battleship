@@ -8,9 +8,8 @@ const show = new ShowBoard();
 const playerBoard = new Gameboard();
 const compBoard = new Gameboard();
 const comp = new AI();
-const player = new Player();
-const playerCells = document.querySelectorAll("playerCell");
-let switcher = 1;
+export const player = new Player();
+export let switcher = 1;
 
 function getRandom() {
   return Math.floor(Math.random() * 2);
@@ -50,15 +49,15 @@ function aiFill() {
   return "Success";
 }
 aiFill();
-window.oncontextmenu = function (e) {
-  e.preventDefault();
-  if (switcher === 1) {
-    switcher = 0;
-  } else if (switcher === 0) {
-    switcher = 1;
-  }
-  console.log("Right Click, Switcher: " + switcher);
-};
+// window.oncontextmenu = function (e) {
+//   e.preventDefault();
+//   if (switcher === 1) {
+//     switcher = 0;
+//   } else if (switcher === 0) {
+//     switcher = 1;
+//   }
+//   console.log("Right Click, Switcher: " + switcher);
+// };
 
 // player.fillBoard(5, 5, playerBoard, 1);
 // player.fillBoard(3, 6, playerBoard, 0);
@@ -90,15 +89,17 @@ cells.forEach(function (cellElement) {
 });
 
 const cellsPlayer = document.querySelectorAll(".cellPlayer");
+const boardPlayer = document.getElementById("playerBoard");
+let y;
+let x;
 
 cellsPlayer.forEach((cellPlayer) => {
-  let y;
-  let x;
   cellPlayer.addEventListener("click", (e) => {
-    e.preventDefault();
-    y = e.target.getAttribute("y");
-    x = e.target.getAttribute("x");
+    y = parseInt(e.target.getAttribute("y"));
+    x = parseInt(e.target.getAttribute("x"));
     player.fillBoard(y, x, playerBoard, switcher);
+    boardPlayer.innerHTML = "";
     show.showBoardPlayer(playerBoard);
+    console.log("this is player's board", playerBoard.board);
   });
 });
