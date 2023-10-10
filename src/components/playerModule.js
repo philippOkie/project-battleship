@@ -108,7 +108,7 @@ export class Player {
       }
     }
 
-    this.isSecondThree();
+    this.isSecondThree(playerBoard);
     this.ships--;
     return playerBoard;
   }
@@ -122,6 +122,8 @@ export class Player {
     if (this.threeLenShip === 2) {
       this.ships++;
       this.threeLenShip++;
+    } else if (this.threeLenShip > 2 && this.ships === 2) {
+      this.ships--;
     } else {
       this.threeLenShip++;
     }

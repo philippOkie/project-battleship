@@ -66,7 +66,6 @@ export class ShowBoard {
           cellPlayer.setAttribute("y", i);
           cellPlayer.setAttribute("x", j);
           cellPlayer.setAttribute("value", 1);
-
           cellPlayer.addEventListener("click", (e) => {
             y = parseInt(e.target.getAttribute("y"));
             x = parseInt(e.target.getAttribute("x"));

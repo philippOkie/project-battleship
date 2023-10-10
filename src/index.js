@@ -49,21 +49,15 @@ function aiFill() {
   return "Success";
 }
 aiFill();
-// window.oncontextmenu = function (e) {
-//   e.preventDefault();
-//   if (switcher === 1) {
-//     switcher = 0;
-//   } else if (switcher === 0) {
-//     switcher = 1;
-//   }
-//   console.log("Right Click, Switcher: " + switcher);
-// };
-
-// player.fillBoard(5, 5, playerBoard, 1);
-// player.fillBoard(3, 6, playerBoard, 0);
-// player.fillBoard(0, 0, playerBoard, 0);
-// player.fillBoard(1, 0, playerBoard, 0);
-// player.fillBoard(2, 0, playerBoard, 0);
+window.oncontextmenu = function (e) {
+  e.preventDefault();
+  if (switcher === 1) {
+    switcher = 0;
+  } else if (switcher === 0) {
+    switcher = 1;
+  }
+  console.log("Right Click, Switcher: " + switcher);
+};
 
 console.log("this is player's board", playerBoard.board);
 // console.log(player.threeLenShip);
