@@ -7,8 +7,13 @@ import { ShowBoard } from "./components/uiModule";
 const show = new ShowBoard();
 const playerBoard = new Gameboard();
 const compBoard = new Gameboard();
-const comp = new AI();
+export const comp = new AI();
 export const player = new Player();
+const cellsPlayer = document.querySelectorAll(".cellPlayer");
+const boardPlayer = document.getElementById("playerBoard");
+const cells = document.querySelectorAll(".cell");
+let y;
+let x;
 export let switcher = 1;
 
 function getRandom() {
@@ -46,9 +51,12 @@ function aiFill() {
     compBoard,
     getRandom()
   );
+  show.showBoard(compBoard);
   return "Success";
 }
+
 aiFill();
+
 window.oncontextmenu = function (e) {
   e.preventDefault();
   if (switcher === 1) {
@@ -56,21 +64,7 @@ window.oncontextmenu = function (e) {
   } else if (switcher === 0) {
     switcher = 1;
   }
-  console.log("Right Click, Switcher: " + switcher);
 };
-
-console.log("this is player's board", playerBoard.board);
-// console.log(player.threeLenShip);
-
-// comp.fillBoard(0, 5, compBoard, 0);
-// comp.fillBoard(2, 5, compBoard, 0);
-// comp.fillBoard(4, 2, compBoard, 0);
-// comp.fillBoard(6, 4, compBoard, 0);
-// comp.fillBoard(6, 5, compBoard, 1);
-show.showBoard(compBoard);
-console.log("this is comp's board", compBoard.board);
-
-const cells = document.querySelectorAll(".cell");
 
 cells.forEach(function (cellElement) {
   cellElement.onclick = function () {
@@ -82,11 +76,6 @@ cells.forEach(function (cellElement) {
   };
 });
 
-const cellsPlayer = document.querySelectorAll(".cellPlayer");
-const boardPlayer = document.getElementById("playerBoard");
-let y;
-let x;
-
 cellsPlayer.forEach((cellPlayer) => {
   cellPlayer.addEventListener("click", (e) => {
     y = parseInt(e.target.getAttribute("y"));
@@ -94,6 +83,5 @@ cellsPlayer.forEach((cellPlayer) => {
     player.fillBoard(y, x, playerBoard, switcher);
     boardPlayer.innerHTML = "";
     show.showBoardPlayer(playerBoard);
-    console.log("this is player's board", playerBoard.board);
   });
 });

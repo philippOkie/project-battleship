@@ -1,8 +1,11 @@
+import { player } from "..";
+
 export class Player {
   constructor() {
     this.counter = 0;
     this.ships = 5;
     this.threeLenShip = 0;
+    this.onesInBoard = 0;
   }
 
   getRandom() {
@@ -130,23 +133,21 @@ export class Player {
   }
 
   attack(x, y, playerBoard) {
-    if (playerBoard.board[x][y] !== 2) {
-      if (playerBoard.board[x][y] === 0) {
-        playerBoard.board[x][y] = 2;
-        console.log("water");
-      } else if (playerBoard.board[x][y] === 1) {
-        playerBoard.board[x][y] = -1;
-        this.decideWhereToHit(x, y, playerBoard);
-        this.counter++;
-        console.log("ship", this.counter);
-      }
-    } else if (playerBoard.board[x][y] === 2) {
-      this.attack(this.getRandomInt(), this.getRandomInt(), playerBoard);
+    if (playerBoard.board[x][y] === 0 || playerBoard.board[x][y] === 3) {
+      playerBoard.board[x][y] = 2;
     }
-    return this.counter, playerBoard.board;
   }
 
   checkIfTheEnd(playerBoard) {
+    shipsNum(playerBoard);
+    if (this.counter === 17) {
+      return true;
+    } else {
+      return this.counter;
+    }
+  }
+
+  shipsNum(playerBoard) {
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
         if (playerBoard.board[i][j] === -1) {
@@ -154,10 +155,19 @@ export class Player {
         }
       }
     }
-    if (this.counter === 17) {
-      return true;
-    } else {
-      return this.counter;
+  }
+
+  onesNum(playerBoard) {
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
+        if (playerBoard.board[i][j] === 1) {
+          this.onesInBoard++;
+        }
+      }
+    }
+    console.log(this.onesInBoard);
+    if (this.onesInBoard === 53) {
+      console.log("Start!");
     }
   }
 }

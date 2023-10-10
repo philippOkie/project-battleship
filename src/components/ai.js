@@ -136,7 +136,7 @@ export class AI {
     } else if (playerBoard.board[x][y] === 2) {
       this.attack(this.getRandomInt(), this.getRandomInt(), playerBoard);
     }
-    return this.counter, playerBoard.board;
+    return playerBoard;
   }
 
   getRandomInt() {

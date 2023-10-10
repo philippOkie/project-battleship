@@ -1,15 +1,17 @@
 const computerBoard = document.getElementById("computerBoard");
 const boardPlayer = document.getElementById("playerBoard");
 const cellsPlayer = document.querySelectorAll(".cellPlayer");
-import { player, switcher } from "../index.js";
+import { player, switcher, comp } from "../index.js";
 
 let y;
 let x;
+let runVar = 0;
 export class ShowBoard {
   constructor() {
     this.ship = 0;
   }
-  showBoard(compBoard) {
+
+  showBoard(compBoard, playerBoard) {
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
         if (compBoard.board[i][j] === 0) {
@@ -19,6 +21,16 @@ export class ShowBoard {
           cell.setAttribute("y", i);
           cell.setAttribute("x", j);
           cell.setAttribute("value", 0);
+          cell.addEventListener("click", (e) => {
+            runVar = cell.getAttribute("value");
+            if (player.onesInBoard >= 53 && runVar == 0) {
+              cell.classList.add("isWata");
+              cell.setAttribute("value", 2);
+              console.log(compBoard);
+            } else {
+              return;
+            }
+          });
         } else if (compBoard.board[i][j] === 1) {
           const cell = document.createElement("div");
           cell.classList.add("cell");
@@ -27,6 +39,16 @@ export class ShowBoard {
           cell.setAttribute("y", i);
           cell.setAttribute("x", j);
           cell.setAttribute("value", 1);
+          cell.addEventListener("click", (e) => {
+            runVar = cell.getAttribute("value");
+            if (player.onesInBoard >= 53 && runVar == 1) {
+              cell.classList.add("isHit");
+              cell.setAttribute("value", -1);
+              console.log(compBoard);
+            } else {
+              return;
+            }
+          });
         } else if (compBoard.board[i][j] === 3) {
           const cell = document.createElement("div");
           cell.classList.add("cell");
@@ -35,6 +57,16 @@ export class ShowBoard {
           cell.setAttribute("value", 3);
           cell.setAttribute("y", i);
           cell.setAttribute("x", j);
+          cell.addEventListener("click", (e) => {
+            runVar = cell.getAttribute("value");
+            if (player.onesInBoard >= 53 && runVar == 3) {
+              cell.classList.add("isWata");
+              cell.setAttribute("value", 2);
+              console.log(compBoard);
+            } else {
+              return;
+            }
+          });
         }
       }
     }
@@ -56,7 +88,7 @@ export class ShowBoard {
             player.fillBoard(y, x, playerBoard, switcher);
             boardPlayer.innerHTML = "";
             this.showBoardPlayer(playerBoard);
-            console.log("this is player's board", playerBoard.board);
+            player.onesNum(playerBoard);
           });
         } else if (playerBoard.board[i][j] === 1) {
           const cellPlayer = document.createElement("div");
@@ -72,7 +104,7 @@ export class ShowBoard {
             player.fillBoard(y, x, playerBoard, switcher);
             boardPlayer.innerHTML = "";
             this.showBoardPlayer(playerBoard);
-            console.log("this is player's board", playerBoard.board);
+            player.onesNum(playerBoard);
           });
         } else if (playerBoard.board[i][j] === 3) {
           const cellPlayer = document.createElement("div");
@@ -88,7 +120,7 @@ export class ShowBoard {
             player.fillBoard(y, x, playerBoard, switcher);
             boardPlayer.innerHTML = "";
             this.showBoardPlayer(playerBoard);
-            console.log("this is player's board", playerBoard.board);
+            player.onesNum(playerBoard);
           });
         }
       }
