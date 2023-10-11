@@ -16,6 +16,10 @@ let y;
 let x;
 export let switcher = 1;
 
+// alert(
+//   "To determine whether you want to place the ship vertically or horizontally, simply right-click."
+// );
+
 function getRandom() {
   return Math.floor(Math.random() * 2);
 }

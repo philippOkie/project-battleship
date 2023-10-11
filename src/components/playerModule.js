@@ -1,5 +1,3 @@
-import { player } from "..";
-
 export class Player {
   constructor() {
     this.counter = 0;
@@ -165,7 +163,6 @@ export class Player {
         }
       }
     }
-    console.log(this.onesInBoard);
     if (this.onesInBoard === 53) {
       console.log("Start!");
     }

@@ -1,7 +1,8 @@
 const computerBoard = document.getElementById("computerBoard");
 const boardPlayer = document.getElementById("playerBoard");
 const cellsPlayer = document.querySelectorAll(".cellPlayer");
-import { player, switcher, comp } from "../index.js";
+const header = document.getElementById("header");
+import { player, switcher } from "../index.js";
 
 let y;
 let x;
@@ -9,9 +10,11 @@ let runVar = 0;
 export class ShowBoard {
   constructor() {
     this.ship = 0;
+    this.aiToLose = 0;
+    this.playerToLose = 0;
   }
 
-  showBoard(compBoard, playerBoard) {
+  showBoard(compBoard) {
     for (let i = 0; i < 10; i++) {
       for (let j = 0; j < 10; j++) {
         if (compBoard.board[i][j] === 0) {
@@ -26,7 +29,28 @@ export class ShowBoard {
             if (player.onesInBoard >= 53 && runVar == 0) {
               cell.classList.add("isWata");
               cell.setAttribute("value", 2);
-              console.log(compBoard);
+
+              const cellsPlayer = document.querySelectorAll(".cellPlayer");
+              cellsPlayer.forEach((cp) => {
+                var value = cp.getAttribute("value");
+                if (value == -1) {
+                  this.playerToLose++;
+                  if (this.playerToLose === 17) {
+                    header.innerText = "Computer wins!";
+                    let timerInSeconds = 0;
+
+                    setInterval(() => {
+                      timerInSeconds += 1;
+
+                      header.innerText = `Restart game in: ${timerInSeconds}`;
+
+                      if (timerInSeconds >= 5) {
+                        window.location.reload();
+                      }
+                    }, 1000);
+                  }
+                }
+              });
             } else {
               return;
             }
@@ -43,8 +67,22 @@ export class ShowBoard {
             runVar = cell.getAttribute("value");
             if (player.onesInBoard >= 53 && runVar == 1) {
               cell.classList.add("isHit");
+              this.aiToLose++;
               cell.setAttribute("value", -1);
-              console.log(compBoard);
+              if (this.aiToLose === 17) {
+                header.innerText = "Player wins!";
+                let timerInSeconds = 0;
+
+                setInterval(() => {
+                  timerInSeconds += 1;
+
+                  header.innerText = `Restart game in: ${timerInSeconds}`;
+
+                  if (timerInSeconds >= 5) {
+                    window.location.reload();
+                  }
+                }, 1000);
+              }
             } else {
               return;
             }
@@ -62,7 +100,27 @@ export class ShowBoard {
             if (player.onesInBoard >= 53 && runVar == 3) {
               cell.classList.add("isWata");
               cell.setAttribute("value", 2);
-              console.log(compBoard);
+              const cellsPlayer = document.querySelectorAll(".cellPlayer");
+              cellsPlayer.forEach((cp) => {
+                var value = cp.getAttribute("value");
+                if (value == -1) {
+                  this.playerToLose++;
+                  if (this.playerToLose === 17) {
+                    header.innerText = "Computer wins!";
+                    let timerInSeconds = 0;
+
+                    setInterval(() => {
+                      timerInSeconds += 1;
+
+                      header.innerText = `Restart game in: ${timerInSeconds}`;
+
+                      if (timerInSeconds >= 5) {
+                        window.location.reload();
+                      }
+                    }, 1000);
+                  }
+                }
+              });
             } else {
               return;
             }
