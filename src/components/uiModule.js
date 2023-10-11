@@ -236,7 +236,7 @@ function attack() {
   if (atr == 1) {
     divToFind.classList.add("isHit");
     divToFind.setAttribute("value", -1);
-    attack();
+    // attack();
   } else if (atr == 2) {
     attack();
   } else if (atr == 3 || atr == 0) {
