@@ -83,29 +83,29 @@ export class ShowBoard {
                   }
                 }, 1000);
               }
-              // const cellsPlayer = document.querySelectorAll(".cellPlayer");
-              // attack();
-              // cellsPlayer.forEach((cp) => {
-              //   var value = cp.getAttribute("value");
-              //   if (value == -1) {
-              //     this.playerToLose++;
-              //     if (this.playerToLose === 17) {
-              //       header.innerText = "Computer wins!";
-              //       let timerInSeconds = 0;
-              //       setInterval(() => {
-              //         timerInSeconds += 1;
+              const cellsPlayer = document.querySelectorAll(".cellPlayer");
+              attack();
+              cellsPlayer.forEach((cp) => {
+                var value = cp.getAttribute("value");
+                if (value == -1) {
+                  this.playerToLose++;
+                  if (this.playerToLose === 17) {
+                    header.innerText = "Computer wins!";
+                    let timerInSeconds = 0;
+                    setInterval(() => {
+                      timerInSeconds += 1;
 
-              //         header.innerText = `Restart game in: ${timerInSeconds}`;
+                      header.innerText = `Restart game in: ${timerInSeconds}`;
 
-              //         if (timerInSeconds >= 5) {
-              //           window.location.reload();
-              //         }
-              //       }, 1000);
-              //     } else if (this.playerToLose !== 17) {
-              //       this.playerToLose = 0;
-              //     }
-              //   }
-              // });
+                      if (timerInSeconds >= 5) {
+                        window.location.reload();
+                      }
+                    }, 1000);
+                  } else if (this.playerToLose !== 17) {
+                    this.playerToLose = 0;
+                  }
+                }
+              });
             } else {
               return;
             }
