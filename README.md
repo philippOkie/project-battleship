@@ -1,5 +1,7 @@
 ![Screenshot from 2023-10-18 10-35-38](https://github.com/philippOkie/project-battleship/assets/112265779/2d95558d-02dd-44e6-b45c-491ad01ebe60)
 
+https://65b81afd6a1a57538e19f389--helpful-elf-285c53.netlify.app/
+
 ##Project Summary: Battleship Game
     This project is a web-based version of the classic board game Battleship, where two players try to sink each other’s ships by guessing their locations on a grid. 
 
